@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import axios from 'axios'
+import swal from 'sweetalert';
 
 export const Navbar = (props) => {
  const history=useHistory();
@@ -16,11 +17,16 @@ export const Navbar = (props) => {
             
             props.setvalid(false);
             history.push('/signin')
+            swal("Logged out successfully","","error");
+
 
 
         }).catch(() => {
             props.setvalid(false);
+         
+
             history.push('/signin')
+            swal("Logged out successfully","","error");
         })
     }
     

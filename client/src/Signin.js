@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import $ from 'jquery'
 import axios from 'axios'
+import swal from 'sweetalert'
 
 export const Signin = (props) => {
      
@@ -31,25 +32,19 @@ export const Signin = (props) => {
     }
     ).then((res) => {
       
-      alert('login success');
+      swal('login success',"","success");
       
       history.push('/react-todo')
       
       props.setuser(res.data.userexist)
       props.setvalid(true)
       
-      
-   
-      
-      
       console.log(props.user)
     })
-      .catch((err, res) => {
-        console.log(err, res);
+      .catch((err) => {
+        swal("Some error occurred","","error");
+        console.log(err);
 
-       
-        
-        alert(err);
       })
 
 

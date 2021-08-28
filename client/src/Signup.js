@@ -1,7 +1,7 @@
 import React from 'react'
 import $ from 'jquery'
 import axios from 'axios'
-
+import swal from 'sweetalert'
 export const Signup = () => {
   // const signup=
   //  (e)=>{
@@ -42,8 +42,8 @@ export const Signup = () => {
         }
       }
       ).then((res) => {
-                       alert('registered success') ;
-                       document.getElementById('SignUpForm').reset();}).catch(err=>{alert(err);
+                       swal('registered success',"","success") ;
+                       document.getElementById('SignUpForm').reset();}).catch(err=>{        swal("Some error occurred","","error");
                         document.getElementById('SignUpForm').reset();})
 
 
@@ -67,11 +67,11 @@ export const Signup = () => {
   //     console.log(data, res)
   //     if(res.status === 422 || !data)
   //     {
-  //         window.alert("Invalid registration");
+  //         window.swal("Invalid registration");
   //         console.log("Invalid reg");
   //     }
   //     else{
-  //         window.alert("successful registration");
+  //         window.swal("successful registration");
   //         console.log("success reg");
   //         
   //     }

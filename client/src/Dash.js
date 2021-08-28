@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import $ from 'jquery'
-
+import swal from 'sweetalert';
 
 import axios from "axios";
 
@@ -28,13 +28,13 @@ export const Dash = (props) => {
         }
       })
       .then((res) => {
-        // alert("registered success");
+        // swal("registered success");
         let x = res.data;
         setData(x);
 
 
       })
-      .catch((err) => alert(err));
+      .catch((err) =>{         swal("Some error occurred","","error");    });
   };
   const [temp, settemp] = useState(false)
   const sub = (e) => {
@@ -48,16 +48,18 @@ export const Dash = (props) => {
       },
       credentials: "include", 
     }).then((res) => {
-      alert(res.data.message);
+      swal(res.data.message,"","success");
       if (temp) {
         settemp(false)
       }
       else {
+
         settemp(true)
       }
-
     }
-    ).catch((err) => { alert(err) })
+    ).catch((err) => {         
+      swal("Some error occurred","","error");
+  })
   }
 
 
@@ -117,18 +119,18 @@ export const Dash = (props) => {
         "Content-Type": "application/json"
       }
     }).then(()=>{
-      alert('postdelete succesfully');
+      swal('postdelete succesfully',"","success");
     if (temp) {
       settemp(false)
     }
     else {
       settemp(true)
     }
+    }).catch((err)=>{
+      swal("Some error occurred","","error");
     })
 
   }
-
-
 
     let edit = (e) => {
      
@@ -158,7 +160,7 @@ export const Dash = (props) => {
           "Content-Type": "application/json"
         }
       }).then((res)=>{
-        alert("post updated")
+        swal("post updated","","success")
         if (temp) {
           settemp(false)
           settextarea();
@@ -171,7 +173,7 @@ export const Dash = (props) => {
         document.getElementById(e+'div').style.display = "block";
       document.getElementById(e+'textarea').style.display = "none";
 
-      }).catch((err)=>{ alert(err)})
+      }).catch((err)=>{ swal(err,"","error")})
   };
 
 
@@ -207,7 +209,7 @@ export const Dash = (props) => {
         {data &&
           data.map((info) => {
             return (
-              <center>
+              <center  data-aos="zoom-in-down" data-aos-delay="100" data-aos-easing="ease-in-sine">
 
                 <div className="mt-5 mb-5 postform">
                 <div className="mb-3">
@@ -234,12 +236,12 @@ export const Dash = (props) => {
                       <div   className="postdiv" id={info._id+"div"}  >{info.text}</div>
                     </div>
                   </form>
-                  { !props.valid&&<><button className="btn me-3" btnidentity={info._id} onClick={()=>{alert('not Signed in')}} >
+                  { !props.valid&&<><button className="btn me-3" btnidentity={info._id} onClick={()=>{swal('not Signed in',"","warning")}} >
                     
                     <i className="fa fa-thumbs-up sizeicon"></i>{" "}
                     {info.likes.number}
                     </button>
-                    <button className="btn me-3" btnidentity={info._id} onClick={()=>{alert('not Signed in')}}
+                    <button className="btn me-3" btnidentity={info._id} onClick={()=>{swal('not Signed in',"","warning")}}
                     >
                     <i className="fa fa-thumbs-down sizeicon"></i>{" "}
                     {info.dislikes.number}
