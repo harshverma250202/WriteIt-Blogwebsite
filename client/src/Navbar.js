@@ -17,7 +17,7 @@ export const Navbar = (props) => {
             
             props.setvalid(false);
             history.push('/signin')
-            swal("Logged out successfully","","error");
+            swal("Logged out successfully","","success");
 
 
 
@@ -26,7 +26,7 @@ export const Navbar = (props) => {
          
 
             history.push('/signin')
-            swal("Logged out successfully","","error");
+            swal("Logged out successfully","","success");
         })
     }
     
