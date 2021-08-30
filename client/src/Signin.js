@@ -56,7 +56,7 @@ export const Signin = (props) => {
     
 <>
 
-<h3 className="mt-5"><center>Share Your Thought  Throw WriteIT<br></br>Register Now </center></h3>
+<h3 className="mt-5"><center>Share Your Thought via WriteIT<br></br>Register Now </center></h3>
     
     <center className='mainform' > 
         <div className="container" >
